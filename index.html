@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Art of AadhuSivs | Shop handmade art & more</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--p:#d9648a;--bg:#fff5f8;--t:#3b2a30}
+*{box-sizing:border-box;margin:0}body{font-family:Poppins,sans-serif;color:var(--t)}a{color:inherit;text-decoration:none}
+.bar{background:var(--p);color:#fff;text-align:center;font-size:13px;padding:8px;letter-spacing:1px}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 5%;position:sticky;top:0;background:#fff;z-index:9;box-shadow:0 1px 8px #0001}
+.logo{font-family:'Playfair Display',serif;font-size:24px;color:var(--p)}nav{display:flex;gap:24px;font-size:14px}nav a:hover{color:var(--p)}
+section{padding:40px 5%}h2{font-family:'Playfair Display',serif;font-size:28px;text-align:center;margin-bottom:24px}
+.hero{position:relative;height:380px;background:var(--bg)}
+.sl{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;transition:opacity .8s;padding:20px}
+.sl.on{opacity:1}.sl h1{font-family:'Playfair Display',serif;font-size:42px;color:var(--p)}.sl p{margin:12px 0 20px}
+.btn{background:var(--p);color:#fff;border:0;padding:11px 26px;border-radius:24px;cursor:pointer;font:inherit;font-size:14px;display:inline-block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px}
+.card{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #0001}
+img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--bg)}
+.badge{position:absolute;top:10px;left:10px;background:var(--p);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px}
+.info{padding:12px}.info b{font-weight:500;display:block;margin-bottom:6px}s{color:#999;font-size:13px;margin:0 6px}.off{color:#2a9d5c;font-size:12px}
+.info .btn{width:100%;margin-top:10px;padding:8px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:20px}
+.tile{text-align:center;cursor:pointer;font-weight:500;font-size:14px}.tile img{border-radius:50%;margin-bottom:8px}
+.wk{display:flex;flex-wrap:wrap;background:var(--bg);align-items:center}.wk>*{flex:1 1 320px;padding:40px}
+.fam{background:linear-gradient(120deg,#f9d5e0,#ffe9c9);text-align:center;padding:60px 5%}
+footer{background:var(--t);color:#fff;text-align:center;padding:30px;font-size:14px;line-height:2}
+#cart{position:fixed;right:-360px;top:0;width:340px;max-width:100%;height:100%;background:#fff;box-shadow:-4px 0 20px #0003;padding:20px;transition:.3s;z-index:20;overflow:auto}
+#cart.open{right:0}.row{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #eee;font-size:14px}
+@media(max-width:700px){nav{display:none}.sl h1{font-size:28px}}
+</style></head><body>
+<div class="bar">FREE SHIPPING ON ORDERS ABOVE 499/-</div>
+<header><a href="#" class="logo">Art of AadhuSivs</a>
+<nav><a href="#best">Featured Products</a><a href="#categories">Categories</a><a href="#all">All Products</a><a href="#weekly">Collections</a><a href="#about">About</a></nav>
+<a href="#" onclick="$('#cart').classList.add('open');return false">🛒 Cart (<span id="n">0</span>)</a></header>
+<div class="hero"><div class="sl on"><h1>Handmade with Love 🎀</h1><p>Original art & handcrafted creations from our channel</p><a class="btn" href="#all">Shop Now</a></div>
+<div class="sl"><h1>New Arrivals 🧸</h1><p>Fresh pieces, made just for you</p><a class="btn" href="#best">See Bestsellers</a></div>
+<div class="sl"><h1>Watch Us Create 🎨</h1><p>See every piece come to life on YouTube</p><a class="btn" id="yt1" target="_blank">Visit Channel</a></div></div>
+<section id="best"><h2>Bestsellers</h2><div class="grid" id="bs"></div></section>
+<section><h2>Trending Collections</h2><div class="tiles" id="trend"></div></section>
+<section id="categories"><h2>Shop By Category</h2><div class="tiles" id="cats"></div></section>
+<section id="weekly" class="wk"><div style="font-size:120px;text-align:center">🎨</div><div><h2 style="text-align:left">Weekly Collection</h2><p style="margin-bottom:20px">Discover beautifully handcrafted creations designed with love and care. Explore art, gifts, accessories and thoughtful pieces that add a handmade touch to every celebration.</p><a class="btn" href="#all">Explore More</a></div></section>
+<section id="all"><h2 id="ct">All Products</h2><div class="grid" id="al"></div></section>
+<div class="fam"><h2>Art of AadhuSivs Family</h2><p>Join our community on YouTube & Instagram 🫶🏻</p><br><a class="btn" id="yt2" target="_blank">Subscribe</a></div>
+<section id="about" style="text-align:center;max-width:800px;margin:auto"><h2>About Us</h2><p><b>Art of AadhuSivs</b> is a handmade art brand dedicated to creating beautiful, high-quality creations with love and precision. Every piece is thoughtfully crafted to bring warmth, creativity and charm to your everyday life.</p></section>
+<footer>© Art of AadhuSivs · <a id="yt3" target="_blank">YouTube</a> · <a id="ig" target="_blank">Instagram</a></footer>
+<div id="cart"><h2>Your Cart</h2><div id="items"></div><p style="margin:16px 0"><b>Total: ₹<span id="tot">0</span></b><br><small>Free shipping above ₹499</small></p><a class="btn" id="wa" target="_blank">Order on WhatsApp</a> <a href="#" onclick="$('#cart').classList.remove('open');return false" style="margin-left:12px">Close</a></div>
+<script>
+const CFG={whatsapp:'91XXXXXXXXXX',youtube:'https://www.youtube.com/@ArtofAadhuSivs',instagram:'https://instagram.com/'};
+const $=s=>document.querySelector(s);let P=[],cart=JSON.parse(localStorage.cart||'[]'),cat='';
+['yt1','yt2','yt3'].forEach(i=>$('#'+i).href=CFG.youtube);$('#ig').href=CFG.instagram;
+const ph="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="400" height="400" fill="#fde7ee"/><text x="200" y="230" font-size="90" text-anchor="middle">🎨</text></svg>');
+const card=p=>`<div class="card">${p.bestseller?'<span class="badge">Bestseller</span>':''}<img src="${p.image||ph}" alt=""><div class="info"><b>${p.name}</b>₹${p.price}${p.mrp>p.price?`<s>₹${p.mrp}</s><span class="off">${Math.round(100-p.price/p.mrp*100)}% Off</span>`:''}<button class="btn" onclick="add('${p.id}')">Add to cart</button></div></div>`;
+const tile=(img,l,c)=>`<div class="tile" data-c="${c}" onclick="pick(this.dataset.c)"><img src="${img||ph}"><div>${l}</div></div>`;
+function render(){const cats=[...new Set(P.map(p=>p.category).filter(Boolean))];
+$('#bs').innerHTML=P.filter(p=>p.bestseller).map(card).join('')||'<p>No bestsellers yet.</p>';
+$('#trend').innerHTML=P.slice(0,4).map(p=>tile(p.image,p.name,p.category||'')).join('');
+$('#cats').innerHTML=cats.map(c=>tile(P.find(p=>p.category==c).image,c,c)).join('');
+$('#al').innerHTML=P.filter(p=>!cat||p.category==cat).map(card).join('');
+$('#ct').textContent=cat||'All Products';$('#n').textContent=cart.reduce((a,c)=>a+c.q,0);drawCart()}
+function pick(c){cat=c;render();location.hash='all'}
+function add(id){const i=cart.find(c=>c.id==id);i?i.q++:cart.push({id,q:1});save();$('#cart').classList.add('open')}
+function rm(id){cart=cart.filter(c=>c.id!=id);save()}
+function save(){localStorage.cart=JSON.stringify(cart);render()}
+function drawCart(){let t=0,l=[];$('#items').innerHTML=cart.map(c=>{const p=P.find(x=>x.id==c.id);if(!p)return'';t+=p.price*c.q;l.push(p.name+' x '+c.q);return `<div class="row"><span>${p.name} × ${c.q}</span><span>₹${p.price*c.q} <a href="#" onclick="rm('${c.id}');return false">✕</a></span></div>`}).join('')||'Cart is empty';
+$('#tot').textContent=t;$('#wa').href='https://wa.me/'+CFG.whatsapp+'?text='+encodeURIComponent('Hi! I want to order:\n'+l.join('\n')+'\nTotal: ₹'+t)}
+let s=0;setInterval(()=>{const a=document.querySelectorAll('.sl');a[s].classList.remove('on');s=(s+1)%a.length;a[s].classList.add('on')},4000);
+fetch('/api/products').then(r=>r.json()).then(d=>{P=Array.isArray(d)?d:[];render()}).catch(render);
+</script></body></html>

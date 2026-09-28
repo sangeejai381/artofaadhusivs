@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin</title>
+<style>body{font-family:sans-serif;max-width:560px;margin:30px auto;padding:0 16px}input,select,button{display:block;width:100%;padding:10px;margin:8px 0;font:inherit;box-sizing:border-box}
+button{background:#d9648a;color:#fff;border:0;border-radius:8px;cursor:pointer}.r{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding:6px 0}.r img{width:44px;height:44px;object-fit:cover;border-radius:6px}.r button{width:auto;padding:4px 10px}</style></head><body>
+<h2>Add Product</h2><input id="pw" type="password" placeholder="Admin password">
+<input id="name" placeholder="Product name"><input id="price" type="number" placeholder="Selling price ₹"><input id="mrp" type="number" placeholder="MRP ₹ (optional)">
+<input id="category" placeholder="Category (e.g. Paintings)"><label><input id="best" type="checkbox" style="display:inline;width:auto"> Bestseller</label>
+<input id="file" type="file" accept="image/*"><button onclick="save()">Add Product</button><p id="msg"></p><h3>Products</h3><div id="list"></div>
+<script>
+const $=s=>document.getElementById(s);
+const load=()=>fetch('/api/products').then(r=>r.json()).then(d=>$('list').innerHTML=d.map(p=>`<div class="r"><span><img src="${p.image||''}"> ${p.name} ₹${p.price}</span><button onclick="del('${p.id}')">Delete</button></div>`).join(''));
+const shrink=f=>new Promise(ok=>{if(!f)return ok('');const i=new Image();i.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,700/i.width);c.width=i.width*k;c.height=i.height*k;c.getContext('2d').drawImage(i,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.8))};i.src=URL.createObjectURL(f)});
+async function call(m,url,body){const r=await fetch(url,{method:m,headers:{'Content-Type':'application/json','x-admin':$('pw').value},body:body&&JSON.stringify(body)});$('msg').textContent=r.ok?'Done ✅':'Failed: wrong password?';load()}
+async function save(){call('POST','/api/products',{name:$('name').value,price:+$('price').value,mrp:+$('mrp').value||+$('price').value,category:$('category').value,bestseller:$('best').checked,image:await shrink($('file').files[0])})}
+const del=id=>confirm('Delete?')&&call('DELETE','/api/products?id='+id);load();
+</script></body></html>
